@@ -1,0 +1,4 @@
+
+Resize the window and you'll notice that the menu bar isn't resizing.
+
+Note: Just loading the window from another cib isn't enough, it needs to be loaded through a Document.

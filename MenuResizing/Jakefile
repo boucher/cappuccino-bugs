@@ -1,0 +1,39 @@
+/*
+ * Jakefile
+ * MenuResizing
+ *
+ * Created by Scott Kyle on February 25, 2010.
+ * Copyright 2010, Standard Nine Inc. All rights reserved.
+ */
+
+var ENV = require("system").env,
+    FILE = require("file"),
+    task = require("jake").task,
+    FileList = require("jake").FileList,
+    app = require("cappuccino/jake").app,
+    configuration = ENV["CONFIG"] || ENV["CONFIGURATION"] || ENV["c"] || "Debug";
+
+app ("MenuResizing", function(task)
+{
+    task.setBuildIntermediatesPath(FILE.join("Build", "MenuResizing.build", configuration));
+    task.setBuildPath(FILE.join("Build", configuration));
+
+    task.setProductName("MenuResizing");
+    task.setIdentifier("com.standardnine.MenuResizing");
+    task.setVersion("1.0");
+    task.setAuthor("Standard Nine Inc.");
+    task.setEmail("info@standardnine.com");
+    task.setSummary("MenuResizing");
+    task.setSources(new FileList("**/*.j"));
+    task.setResources(new FileList("Resources/*"));
+    task.setIndexFilePath("index.html");
+    task.setInfoPlistPath("Info.plist");
+    task.setNib2CibFlags("-R Resources/");
+
+    if (configuration === "Debug")
+        task.setCompilerFlags("-DDEBUG -g");
+    else
+        task.setCompilerFlags("-O");
+});
+
+task ("default", ["MenuResizing"]);
