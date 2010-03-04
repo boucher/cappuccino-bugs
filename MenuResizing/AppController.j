@@ -17,8 +17,8 @@ var BASE_URL = [CPURL URLWithString:document.location.href];
 
 - (void)applicationDidFinishLaunching:(CPNotification)aNotification
 {
-    var url = [CPURL URLWithString:"info.plist" relativeToURL:BASE_URL];
-    [[CPDocumentController sharedDocumentController] openDocumentWithContentsOfURL:url display:YES error:nil];
+    //alert([CPApp mainMenu]);
+    //window.x = [CPApp mainMenu];
 }
 
 - (void)awakeFromCib
